@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  web:
+    container_name: es_web
+    build: .
+    ports:
+      - 5000:5000
+    environment:
+      - ELASTIC_USER=${ELASTIC_USER}
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+    volumes:
+      - .:/app
+    depends_on:
+      - elasticsearch
+    networks:
+      - testing
+
+  elasticsearch:
+    container_name: es_db
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.12.1
+    ports:
+      - 9200:9200
+    environment:
+      - ELASTIC_USER=${ELASTIC_USER}
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - discovery.type=single-node
+    networks:
+      - testing
+
+networks:
+  testing:
+    driver: bridge
