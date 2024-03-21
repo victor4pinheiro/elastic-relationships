@@ -12,7 +12,7 @@ ELASTIC_HOST = getenv("ELASTIC_HOST")
 
 app = Flask(__name__)
 db = Elasticsearch(
-        ELASTIC_URL,
+        ELASTIC_HOST,
         basic_auth=(ELASTIC_USER, ELASTIC_PASSWORD),
         verify_certs=False
 )
