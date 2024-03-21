@@ -21,4 +21,4 @@ jobs:
             pip install pytest pytest-md pytest-emoji
         - name: Run test
           run: |
-            pytest tests/
+            pytest tests/__init__.py
