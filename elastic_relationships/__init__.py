@@ -25,7 +25,7 @@ def create_order():
 
 @app.get("/")
 def sample():
-    return { "teste": "teste" }
+    return { "property": "teste" }
 
 if __name__ == "__main__":
     app.run(debug=True)
