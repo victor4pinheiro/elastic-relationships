@@ -19,4 +19,6 @@ jobs:
         - name: Install dependencies
           run: |
             pip install pytest pytest-md pytest-emoji
-        - uses: ./tests/
+        - name: Run test
+          run: |
+            pytest tests/
