@@ -23,5 +23,9 @@ def create_order():
     test = { "message": "Main" }
     return make_response(test, 200)
 
+@app.get("/")
+def sample():
+    return { "teste": "teste" }
+
 if __name__ == "__main__":
     app.run(debug=True)
