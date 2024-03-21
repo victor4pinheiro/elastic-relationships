@@ -8,7 +8,7 @@ load_dotenv()
 
 ELASTIC_USER = getenv("ELASTIC_USER") or "elastic"
 ELASTIC_PASSWORD = getenv("ELASTIC_PASSWORD") or "SuperSecret"
-ELASTIC_URL = getenv("ELASTIC_URL")
+ELASTIC_HOST = getenv("ELASTIC_HOST")
 
 app = Flask(__name__)
 db = Elasticsearch(
