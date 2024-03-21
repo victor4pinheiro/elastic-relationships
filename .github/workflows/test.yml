@@ -4,8 +4,13 @@ on: [push]
 
 jobs:
   test:
+    environment: testing
     name: Run tests (setup-python)
     runs-on: ubuntu-latest
+    env:
+      ELASTIC_PASSOWRD: ${{ secrets.ELASTIC_PASSWORD }}
+      ELASTIC_USER: ${{ secrets.ELASTIC_USER }}
+      ELASTIC_HOST: ${{ secrets.ELASTIC_HOST }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python 3.10.12
