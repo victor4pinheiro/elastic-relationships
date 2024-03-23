@@ -1,6 +1,10 @@
 # Created by https://www.toptal.com/developers/gitignore/api/asdf,python,visualstudiocode,jetbrains,vim,emacs
 # Edit at https://www.toptal.com/developers/gitignore?templates=asdf,python,visualstudiocode,jetbrains,vim,emacs
 
+# Git
+.git
+.gitignore
+
 ### asdf ###
 /.tool-versions
 
