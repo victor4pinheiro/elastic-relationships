@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   web:
-    container_name: elastic-relationships-web
+    container_name: web
     build: .
     image: testingdes.azurecr.io/elastic-relationships-web
     ports:
@@ -10,24 +10,32 @@ services:
     environment:
       - ELASTIC_USER=${ELASTIC_USER}
       - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - ELASTIC_CERTS=${ELASTIC_CERTS}
     volumes:
-      - .:/app
+      - app:/app
     depends_on:
       - elasticsearch
     networks:
       - testing
 
   elasticsearch:
-    container_name: elastic-relationships-db
-    image: bitnami/elasticsearch:8.12.1
+    container_name: db
+    image: elasticsearch:8.12.1
     ports:
       - 9200:9200
+    volumes:
+      - data:/var/lib/elasticsearch/data
     environment:
       - ELASTIC_USER=${ELASTIC_USER}
       - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
       - discovery.type=single-node
+      - xpack.security.authc.anonymous.roles=full_roles
     networks:
       - testing
+
+volumes:
+  data:
+  app:
 
 networks:
   testing:
