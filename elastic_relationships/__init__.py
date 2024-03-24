@@ -13,7 +13,7 @@ ELASTIC_HOST = getenv("ELASTIC_HOST")
 
 app = Flask(__name__)
 db = Elasticsearch(
-    ELASTIC_HOST, basic_auth=(ELASTIC_USER, ELASTIC_PASSWORD)
+    ELASTIC_HOST, basic_auth=(ELASTIC_USER, ELASTIC_PASSWORD), ca_certs=ELASTIC_CERTS
 )
 
 
@@ -40,6 +40,7 @@ def create_customer() -> Response:
             "contactName": contact_name,
             "country": country,
         }
+
         db.index(index="customers", body=customer)
     except Exception as e:
         return format_message(error=f"Error: {e}", status=400)
