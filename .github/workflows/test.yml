@@ -11,6 +11,7 @@ jobs:
       ELASTIC_PASSOWRD: ${{ secrets.ELASTIC_PASSWORD }}
       ELASTIC_USER: ${{ secrets.ELASTIC_USER }}
       ELASTIC_HOST: ${{ secrets.ELASTIC_HOST }}
+      ELASTIC_CERTS: ${{ secrets.ELASTIC_CERTS }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python 3.10.12
@@ -25,4 +26,4 @@ jobs:
           poetry install
       - name: Run tests
         run: |
-          poetry run pytest tests/__init__.py
+          poetry run pytest tests/
