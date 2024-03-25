@@ -19,7 +19,7 @@ services:
       - testing
 
   elasticsearch:
-    container_name: db
+    container_name: elasticsearch
     image: elasticsearch:8.12.1
     ports:
       - 9200:9200
