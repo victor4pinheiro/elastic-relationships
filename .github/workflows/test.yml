@@ -34,6 +34,10 @@ jobs:
       ELASTIC_CERTS: ${{ secrets.ELASTIC_CERTS }}
     steps:
       - uses: actions/checkout@v4
+      - uses: hoverkraft-tech/compose-action@v1.5.1
+      - name: Start the services
+        run: |
+          sh ./docker.sh
       - name: Set up Python 3.10.12
         uses: actions/setup-python@v5
         with:
